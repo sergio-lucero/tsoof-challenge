@@ -31,7 +31,7 @@ public class ExceptionUtil {
     }
 
     for (int i = min; i < stackTraceLines.length; i++) {
-      if (stackTraceLines[i].contains("com.osana")) {
+      if (stackTraceLines[i].contains("com.sooft")) {
         lines.add(stackTraceLines[i].trim());
       }
     }
