@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:14.3-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      TZ: 'UTC'
+      PGTZ: 'UTC'
+    ports:
+      - 5454:5432
+    volumes:
+      - ./src/test/resources/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./src/test/resources/data.sql:/docker-entrypoint-initdb.d/02_data.sql
+
+  adminer:
+     image: adminer
+     restart: always
+     ports:
+       - 8080:8080
